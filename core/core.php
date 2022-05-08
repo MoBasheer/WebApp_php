@@ -3,7 +3,7 @@
 class App{
 
     var $controller = 'HomeController';
-    var $method = 'index';
+    var $method = 'get';
     var $params = [];
 
     //This class contains controller, method, & params

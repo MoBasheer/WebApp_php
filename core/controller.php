@@ -16,8 +16,8 @@
 
         //Invoke view, put data
         public function view($name, $data = []){ //$data will contain data in this view
-            if(file_exists('../views' . $name . '.php')){
-                include '../views' . $name . '.php';
+            if(file_exists('./views/' . $name . '.php')){
+                include './views/' . $name . '.php';
             } else {
                 echo 'ERROR: the view $name does not exist!';
             }
