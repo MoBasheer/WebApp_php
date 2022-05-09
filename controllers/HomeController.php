@@ -13,12 +13,6 @@
         public function post() {
             echo 'shit bro';
         }
-        // public function index(){
-        //     echo 'In home controller';
-
-            
-        //     // $this->view('../views/Home/home');
-        // }
     }
 
 ?>
