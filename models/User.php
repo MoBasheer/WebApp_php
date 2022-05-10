@@ -15,7 +15,7 @@
             $SQL = 'SELECT * FROM Users WHERE user_id = :user_id';
             $stmt = self::$_connection->prepare($SQL);
             $stmt->execute(['user_id'=>$user_id]);
-            $stmt->setFetchMode(PDO::FETCH_CLASS, 'Users');
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $stmt->fetch();
         }
 
@@ -26,9 +26,9 @@
             $stmt->execute(['username'=>$username]);
             // Instance to be populated by database fetch operation
             $result = new User();
-            $stmt->setFetchMode(PDO::FETCH_INTO, $result);
-            $stmt->fetch();
-            return $result;
+            $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+            return $stmt->fetch();
+            // return $result;
         }
 
         //Create user when register
