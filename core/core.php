@@ -12,7 +12,7 @@ class App{
         $url = $this->parseURL();
 
         //check if controller exist
-        if(file_exists('./controllers/' . $url[0] . 'Controller.php')){
+        if(file_exists(APPLICATION_PATH . '/controllers/' . $url[0] . 'Controller.php')){
             $this->controller = $url[0] . 'Controller';
             unset($url[0]);
         } else if ($url[0] == '') {
@@ -23,7 +23,7 @@ class App{
             return;
         }
         
-        require_once 'controllers/' . $this->controller . '.php';
+        require_once APPLICATION_PATH . '/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller();
         //check exist method 
         if(isset($url[1]) && method_exists($this->controller, $url[1])){

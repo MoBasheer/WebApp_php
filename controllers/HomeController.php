@@ -6,10 +6,10 @@
             if ($_SESSION['user_id'] == null) {
                 header('location:/login');
             } else {
-                $this->view('home/home');
+                $username = $_SESSION['username'];
+                $this->view('home/home', $username);
             }
         }
         
     }
-
 ?>

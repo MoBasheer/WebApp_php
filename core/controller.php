@@ -6,8 +6,8 @@
     Class Controller {
         //Invoke model, access db
         public function model($model){
-            if(file_exists('./models/' . $model . '.php')){
-                require_once './models/' . $model . '.php';
+            if(file_exists(APPLICATION_PATH . '/models/' . $model . '.php')){
+                require_once APPLICATION_PATH . '/models/' . $model . '.php';
                 return new $model();
             } else {
                 return null;
@@ -17,10 +17,10 @@
         //Invoke view, put data
         public function view($name, $data = []){ 
             //$data will contain data in this view
-            if(file_exists('./views/' . $name . '.php')){
-                include './views/' . $name . '.php';
+            if(file_exists(APPLICATION_PATH . '/views/' . $name . '.php')){
+                include APPLICATION_PATH . '/views/' . $name . '.php';
             } else {
-                echo 'ERROR: the view $name does not exist!';
+                echo "ERROR: the view $name does not exist!";
             }
         }
     }

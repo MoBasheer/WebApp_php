@@ -20,7 +20,8 @@ class LoginController extends Controller {
             //if user exists and passowrd is correct, start session and login
             if($aUser != null && password_verify($_POST['password'], $aUser->password)){
                 $_SESSION['user_id'] = $aUser->user_id;
-                // $_SESSION['role'] = $aUser->role;
+                $_SESSION['role'] = $aUser->role;
+                $_SESSION['username'] = $aUser->username;
                 header('location:/home');
             } else {
                 //return error

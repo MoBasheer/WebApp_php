@@ -13,19 +13,10 @@
             if(isset($_POST['action'])){
                 $newUser = $this->model('User');
                 $aUser = $newUser->findUser($_POST['username']);
-
-                var_dump($_POST);
-                echo "<br />";
-                var_dump($newUser);
-                echo "<br />";
-                var_dump($aUser);
-                echo "<br />";
-    
                 //check if user doesn't exist & passwords match => insert into database
                 if($aUser == null && $_POST['password'] == $_POST['password_confirm']){
-                    echo 'Oh yeah';
                     $newUser->username = $_POST['username'];
-                    $newUser->password = password_hash($_POST['password'], PASSWORD_DEFAULT); // hash function to hash password
+                    $newUser->password = password_hash($_POST['password'], PASSWORD_DEFAULT);// hash function to hash password
                     $newUser->createUser();
                     header('location:/login/login'); 
                 }
@@ -36,5 +27,4 @@
             }
         }
     }
-
 ?>

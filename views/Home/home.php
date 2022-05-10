@@ -6,8 +6,12 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Hello, user</h1>
-    <button id='logoutBtn'>Log out</button>
+    <?php
+        if ($_SESSION['username']) {
+            echo "<h1>Hello " . $_SESSION['username'] . "!</h1>";
+        }
+    ?>
+    <button id='logoutBtn'>Log out</button>    
 </body>
 
 <script>
