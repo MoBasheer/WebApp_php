@@ -7,6 +7,16 @@
 </head>
 <body>
     <h1>Hello, user</h1>
-    <a href="login.php">Log out</a>
+    <button id='logoutBtn'>Log out</button>
 </body>
+
+<script>
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+        fetch('/login', {
+            method: 'DELETE',
+        })
+        .then(() => window.location.href = '/')
+        .catch(console.error);
+    })
+</script>
 </html>

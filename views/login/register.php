@@ -18,6 +18,6 @@
         <input type="password"  placeholder="Confirm Password" name="password_confirm">
         <input type="submit" name="action" value="Register">
     </form>
-    Already have an account? <a href="login.php">Login</a>
+    Already have an account? <a href="login">Login</a>
 </body>
 </html>

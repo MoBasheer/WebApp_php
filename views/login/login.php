@@ -17,7 +17,7 @@
         <input type="password" placeholder="Password" name="password">
         <input type="submit" name="action" value="Login">
     </form>
-    No account yet? <a href="register.php">Register</a>
+    No account yet? <a href="register">Register</a>
 
 </body>
 </html>

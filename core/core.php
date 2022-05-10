@@ -11,21 +11,27 @@ class App{
     public function __construct(){
         $url = $this->parseURL();
 
-
+        //check if controller exist
         if(file_exists('./controllers/' . $url[0] . 'Controller.php')){
             $this->controller = $url[0] . 'Controller';
             unset($url[0]);
+        } else if ($url[0] == '') {
+            unset($url[0]);
+        } else {
+            //return page not found
+            header('location:/notfound');
+            return;
         }
-        
         
         require_once 'controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller();
-        
-        if(isset($url[1])){
-            if(method_exists($this->controller, $url[1])){
-                $this->method = $url[1];
-                unset($url[1]);
-            }
+        //check exist method 
+        if(isset($url[1]) && method_exists($this->controller, $url[1])){
+            $this->method = $url[1];
+            unset($url[1]);
+        } else {
+            //return 403 error
+            http_response_code(403);
         }
 
 
@@ -40,7 +46,7 @@ class App{
 
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
-
+    //parse url
     private function parseUrl(){
         if(isset($_GET['url'])){
             return $url = [

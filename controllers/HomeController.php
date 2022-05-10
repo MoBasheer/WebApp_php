@@ -3,16 +3,13 @@
 
     class HomeController extends Controller {
         public function get() { 
-            if (isset($_SESSION[0])) {
-                $this->view('home/home');
+            if ($_SESSION['user_id'] == null) {
+                header('location:/login');
             } else {
-                $this->view('login/login');
+                $this->view('home/home');
             }
         }
         
-        public function post() {
-            echo 'shit bro';
-        }
     }
 
 ?>
