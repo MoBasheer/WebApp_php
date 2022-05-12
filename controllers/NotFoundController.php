@@ -4,4 +4,3 @@
             $this->view('login/notfound');
         }
     }
-?>

@@ -1,6 +1,7 @@
 <?php
 
-class App{
+class App
+{
 
     var $controller = 'HomeController';
     var $method = 'get';
@@ -8,11 +9,12 @@ class App{
 
     //This class contains controller, method, & params
     //attributes, initialized with default values.
-    public function __construct(){
+    public function __construct()
+    {
         $url = $this->parseURL();
 
         //check if controller exist
-        if(file_exists(APPLICATION_PATH . '/controllers/' . $url[0] . 'Controller.php')){
+        if (file_exists(APPLICATION_PATH . '/controllers/' . $url[0] . 'Controller.php')) {
             $this->controller = $url[0] . 'Controller';
             unset($url[0]);
         } else if ($url[0] == '') {
@@ -22,11 +24,11 @@ class App{
             header('location:/notfound');
             return;
         }
-        
+
         require_once APPLICATION_PATH . '/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller();
         //check exist method 
-        if(isset($url[1]) && method_exists($this->controller, $url[1])){
+        if (isset($url[1]) && method_exists($this->controller, $url[1])) {
             $this->method = $url[1];
             unset($url[1]);
         } else {
@@ -34,8 +36,8 @@ class App{
             http_response_code(403);
         }
 
-
         $this->params = $url ? array_values($url) : [];
+        call_user_func_array([$this->controller, $this->method], $this->params);
 
         // var_dump($this->controller);
         // echo '<br />';
@@ -44,11 +46,11 @@ class App{
         // var_dump($this->params);
         // echo '<br />';
 
-        call_user_func_array([$this->controller, $this->method], $this->params);
     }
     //parse url
-    private function parseUrl(){
-        if(isset($_GET['url'])){
+    private function parseUrl()
+    {
+        if (isset($_GET['url'])) {
             return $url = [
                 explode('/', filter_var(rtrim($_GET['url'], '/'), FILTER_SANITIZE_URL))[0],
                 $_SERVER['REQUEST_METHOD'],
@@ -57,4 +59,3 @@ class App{
         }
     }
 }
-?> 

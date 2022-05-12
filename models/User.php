@@ -10,13 +10,19 @@
             parent::__construct();
         }
 
-        //Find user bij ID
-        public function find($user_id){
-            $SQL = 'SELECT * FROM Users WHERE user_id = :user_id';
+        //Get users info
+        public function get(){
+            $SQL = "SELECT user_id,username,role FROM Users";
             $stmt = self::$_connection->prepare($SQL);
-            $stmt->execute(['user_id'=>$user_id]);
+            $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
-            return $stmt->fetch();
+            return $stmt->fetchAll();
+        }
+
+        //Update user password
+        public function updatePassword($password){
+            $SQL = 'UPDATE Users SET password = :password WHERE user_id = user_id';
+
         }
 
         //Find user bij username
@@ -25,10 +31,8 @@
             $stmt = self::$_connection->prepare($SQL);
             $stmt->execute(['username'=>$username]);
             // Instance to be populated by database fetch operation
-            $result = new User();
             $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
             return $stmt->fetch();
-            // return $result;
         }
 
         //Create user when register
@@ -39,4 +43,3 @@
             return $stmt->rowCount();
         }
     }
-?>
