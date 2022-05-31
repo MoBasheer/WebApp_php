@@ -47,10 +47,10 @@
         }
 
         //Delete user
-        public function deleteUser(){
-            $SQL = 'DELETE FROM Users WHERE user_id = :user_id';
+        public function deleteUser($username){
+            $SQL = 'DELETE FROM Users WHERE username = :username';
             $stmt = self::$_connection->prepare($SQL);
-            $stmt->execute(['user_id'=>$this->user_id]);
+            $stmt->execute(['username'=>$username]);
             return $stmt->rowCount();
         }
     }

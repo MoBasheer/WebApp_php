@@ -26,9 +26,10 @@
             <tbody>
                 <?php
                 $user = $this->getUsers();
+                
                 foreach ($user as $arrayIterator => $userValue) {
                     echo "<tr><td>" . htmlspecialchars($userValue->user_id, ENT_COMPAT, 'UTF-8') . "</td>" . "<td>" . htmlspecialchars($userValue->username, ENT_COMPAT, 'UTF-8')
-                        . "</td>" . "<td>" . htmlspecialchars($userValue->role, ENT_COMPAT, 'UTF-8') . "</td>" . "<td>" . "<button id='delete' class='btn btn-danger'>Verwijderen</button>" .  "</td></tr>";
+                        . "</td>" . "<td>" . htmlspecialchars($userValue->role, ENT_COMPAT, 'UTF-8') . "</td>" . "<td>" . (($userValue->role != 'admin') ? "<button class='delete-btn btn btn-danger'>Verwijderen</button>" : '') .  "</td></tr>";
                 }
                 ?>
             </tbody>
@@ -37,13 +38,18 @@
     </section>
 </body>
 <script>
-    document.getElementById('delete').addEventListener('click', async () => {
-        fetch('home/manageUsers', {
+    document.querySelectorAll('.delete-btn').forEach(btn => btn.addEventListener('click', (event) => {
+        const username = event.target.parentElement.parentElement.children[1].innerText;
+        
+        fetch(`/manageUsers?username=${username}`, {
                 method: 'DELETE',
             })
-            .then(() => window.location.href = '/')
+            .then(res => {
+                // Refresh page to get new results
+                location.reload();
+            })
             .catch(console.error);
-    })
+    }))
 </script>
 
 </html>

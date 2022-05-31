@@ -14,25 +14,25 @@ class ManageUsersController extends Controller
         $this->getUsers();
     }
 
-    public function delete()
-    {
-        $this->deleteUser();
-    }
-
     public function getUsers()
     {
         $users = $this->model('User')->get();
         return $users;
     }
-
-    public function deleteUser()
+    
+    public function delete($params)
     {
-        $aUser = $this->model('User')->findUser($_POST['username']);
-        if (isset($_POST['action'])) {
-            $aUser->deleteUser();
-            header('location:home/manageUsers');
-        } else {
-            $this->view('home/manageUsers', $aUser);
+        // If current user isn't admin reject
+        if ($_SESSION['role'] != 'admin') {
+            header('HTTP/1.0 403 Forbidden');
         }
+        // There's only one admin and deleting him is forbidden
+        $aUser = $this->model('User')->findUser($params['username']);
+        if ($aUser->role == 'admin') {
+            header('HTTP/1.0 403 Forbidden');
+            return;
+        }
+        // Otherwise it's a normal user delete him
+        $this->model('User')->deleteUser($params['username']);;
     }
 }
