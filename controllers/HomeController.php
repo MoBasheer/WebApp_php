@@ -1,6 +1,4 @@
 <?php
-    require_once 'core/controller.php';
-
     class HomeController extends Controller {
         public function get() { 
             //Check for session. No session, redirect to login

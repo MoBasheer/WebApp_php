@@ -1,0 +1,13 @@
+body {
+    background: rgb(255, 80, 80);
+    background: radial-gradient(circle, rgba(255, 80, 80, 1) 0%, rgba(240, 240, 240, 1) 0%, rgba(255, 80, 80, 1) 100%);
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+.logo {
+    width: 280px;
+    height: 240px;
+}

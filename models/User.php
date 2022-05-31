@@ -20,9 +20,11 @@
         }
 
         //Update user password
-        public function updatePassword($password){
-            $SQL = 'UPDATE Users SET password = :password WHERE user_id = user_id';
-
+        public function updatePassword(){
+            $SQL = 'UPDATE Users SET password = :password WHERE username = :username';
+            $stmt = self::$_connection->prepare($SQL);
+            $stmt->execute(['password'=>$this->password, 'username'=>$this->username]);
+            return $stmt->rowCount();
         }
 
         //Find user bij username
@@ -40,6 +42,15 @@
             $SQL = 'INSERT INTO Users(username, password) VALUES(:username, :password)';
             $stmt = self::$_connection->prepare($SQL);
             $stmt->execute(['username'=>$this->username, 'password'=>$this->password]);
+            return $stmt->rowCount();
+            echo 'Je hebt met succes aangemeld, log hier in om verder te gaan!';
+        }
+
+        //Delete user
+        public function deleteUser(){
+            $SQL = 'DELETE FROM Users WHERE user_id = :user_id';
+            $stmt = self::$_connection->prepare($SQL);
+            $stmt->execute(['user_id'=>$this->user_id]);
             return $stmt->rowCount();
         }
     }

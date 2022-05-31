@@ -4,6 +4,9 @@ class LoginController extends Controller
 {
     public function get()
     {
+        if ($_SESSION['user_id'] !== null) {
+            header('location:/home');
+        }
         $this->view('login/login');
     }
 
@@ -30,7 +33,7 @@ class LoginController extends Controller
                 header('location:/home');
             } else {
                 //return error
-                $this->view('login/login', 'Incorrect username/password combination!');
+                $this->view('login/login', 'Onjuiste gebruikersnaam/wachtwoord combinatie!');
             }
         } else {
             $this->view('login/login');
