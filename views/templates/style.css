@@ -1,13 +1,23 @@
 body {
-    background: rgb(255, 80, 80);
-    background: radial-gradient(circle, rgba(255, 80, 80, 1) 0%, rgba(240, 240, 240, 1) 0%, rgba(255, 80, 80, 1) 100%);
-}
-
-.btn-primary {
-    width: 100%;
+    background: rgb(160, 160, 165);
 }
 
 .logo {
     width: 280px;
     height: 240px;
+}
+
+.col {
+    background-color: rgb(242, 242, 242);
+}
+
+.btn {
+    color: white;
+    background-color: black;
+    width: 100%;
+}
+
+.btn:hover {
+    color: white;
+    background-color: rgb(160, 160, 165);
 }
