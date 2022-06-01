@@ -13,7 +13,7 @@
     <?php include 'views/templates/nav.php'; ?>
 
     <!--Body -->
-    <section class="bg-light text-dark p-5 mt-5 text-center text-sm-start">
+    <section class="text-dark p-5 mt-5 text-center text-sm-start">
         <form action="" method="post">
             <div>
                 <h1 class="mb-5">Wachtwoord wijzigen</h1>
