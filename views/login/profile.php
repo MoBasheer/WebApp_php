@@ -30,6 +30,11 @@
                     <td><input class="form-control ms-3" type="password" placeholder="wachtwoord" value="*******" disabled></td>
                 </tr>
             </table>
+            <?php
+            if ($_SESSION['role'] == 'admin') {
+                echo '<a href="/manageUsers" class="btn btn-secondary mt-5">Gebruikers beheren</a>';
+            }
+            ?>
             <a href="passwordChange" class="btn btn-info mt-5">Wachtwoord wijzigen</a>
             <a href="home" class="btn btn-warning mt-5">Terug</a>
         </div>
