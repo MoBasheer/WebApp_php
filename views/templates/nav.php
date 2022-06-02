@@ -1,4 +1,3 @@
-<body>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
         <div class="container">
             <a href="/home" class="navbar-brand">De IJverRijschool</a>
@@ -25,7 +24,6 @@
             </div>
         </div>
     </nav>
-</body>
 <script>
     document.getElementById('logoutBtn').addEventListener('click', async () => {
         fetch('/login', {
