@@ -12,25 +12,29 @@ class PasswordChangeController extends Controller
 
     public function post()
     {
-        $this->changePassword();
-    }
-
-    public function changePassword()
-    {
-        $curPass = $_POST['password'];
+        if ($_SESSION['username'] == null) {
+            header('HTTP/1.0 403 Forbidden');
+        }
+        $oldPass = $_POST['old_password'];
         $newPass = $_POST['new_password'];
         $newPassCon = $_POST['new_password_confirm'];
         //find user in db by username
-        $aUser = $this->model('User')->findUser($_POST['username']);
+        $aUser = $this->model('User')->findUser($_SESSION['username']);
+        $msg = array();
         //check if old pass is correct and new passwords match
-        if ($curPass == $_POST['password'] && $newPass == $newPassCon) {
-            if (isset($_POST['action'])) {
-                $aUser->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        if (isset($_POST['action'])) {
+            if (password_verify($oldPass, $aUser->password) && $newPass == $newPassCon) {
+                var_dump(password_verify($oldPass, $aUser->password));
+                $aUser->password = password_hash($newPass, PASSWORD_BCRYPT);
                 $aUser->updatePassword();
-                header('location:/login/profile');
+                $msg['succes'] = 'The password has been successfully changed!';
+                $this->view('login/passwordChange', $msg);
             } else {
-                $this->view('login/passwordChange', 'Het huidige wachtwoord is niet correct of de nieuwe wachtwoorden komen niet overeen!');
+                $msg['error'] = 'Het huidige wachtwoord is niet correct of de nieuwe wachtwoorden komen niet overeen!';
+                $this->view('login/passwordChange', $msg);
             }
+        } else {
+            $this->view('login/passwordChange');
         }
     }
 }

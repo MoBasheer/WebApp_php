@@ -28,11 +28,7 @@
                         <input type="password" name="password" placeholder="Wachtwoord" class="form-control">
                         <label for="floatingInput">Wachtwoord</label>
                     </div>
-                    <?php
-                    if (!is_array($data)) {
-                        echo "<div class='alert alert-danger'>" . htmlspecialchars($data, ENT_COMPAT, 'UTF-8') . "</div>";
-                    }
-                    ?>
+                    <?php include 'views/templates/msg.php'; ?>
                     <input type="submit" name="action" value="Log In" class="btn">
                 </form>
                 <h6 class="mt-4 text-center">Nog geen account? Meld je <a href="register" class="text-primary">hier</a> aan</h6>

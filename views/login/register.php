@@ -32,11 +32,7 @@
                         <input type="password" name="password_confirm" placeholder="Bevestig wachtwoord" class="form-control">
                         <label for="floatingInput">Bevestig wachtwoord</label>
                     </div>
-                    <?php
-                    if (!is_array($data)) {
-                        echo "<div class='alert alert-danger'>" . htmlspecialchars($data, ENT_COMPAT, 'UTF-8') . "</div>";
-                    }
-                    ?>
+                    <?php include 'views/templates/msg.php'; ?>
                     <input type="submit" name="action" value="Aanmelden" class="btn">
                 </form>
                 <h6 class="mt-4 text-center">Heb je al een account? Log <a href="login" class="text-primary">hier</a> in</h6>

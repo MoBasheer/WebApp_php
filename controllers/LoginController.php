@@ -12,16 +12,6 @@ class LoginController extends Controller
 
     public function post()
     {
-        $this->login();
-    }
-
-    public function delete()
-    {
-        $this->logout();
-    }
-
-    public function login()
-    {
         //display the login form and process user input
         if (isset($_POST['action'])) {
             $aUser = $this->model('User')->findUser($_POST['username']);
@@ -33,16 +23,17 @@ class LoginController extends Controller
                 header('location:/home');
             } else {
                 //return error
-                $this->view('login/login', 'Onjuiste gebruikersnaam/wachtwoord combinatie!');
+                $msg['error'] = 'De gebruikersnaam is in gebruik of de wachtwoorden komen niet overeen!';
+                $this->view('login/login', $msg);
             }
         } else {
             $this->view('login/login');
         }
     }
 
-    public function logout()
+    //process logout requests
+    public function delete()
     {
-        //process logout requests
         session_destroy();
     }
 }

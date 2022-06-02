@@ -11,11 +11,6 @@ class RegisterController extends Controller
 
     public function post()
     {
-        $this->register();
-    }
-
-    public function register()
-    {
         //display the register form and process registration
         if (isset($_POST['action'])) {
             $newUser = $this->model('User');
@@ -26,10 +21,13 @@ class RegisterController extends Controller
                 // hash function to hash password using CRYPT_BLOWFISH algorithm
                 $newUser->password = password_hash($_POST['password'], PASSWORD_BCRYPT);
                 $newUser->createUser();
-                header('location:/login/login');
+                $msg['succes'] = 'You have registered successfully, please go to the login page to log in!';
+                $this->view('login/register', $msg);
+            } else {
+                //return error
+                $msg['error'] = 'De gebruikersnaam is in gebruik of de wachtwoorden komen niet overeen!';
+                $this->view('login/register', $msg);
             }
-            //return error
-            $this->view('login/register', 'De gebruikersnaam is in gebruik of de wachtwoorden komen niet overeen!');
         } else {
             $this->view('login/register');
         }
