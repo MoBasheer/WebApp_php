@@ -11,10 +11,10 @@
     <title>Login</title>
 </head>
 
-<body>
+<body class="login_body">
     <div class="container">
         <div class="row vh-100 align-items-center justify-content-center ">
-            <div class="col col-sm-2 col-md-6 col-lg-4 rounded p-4 shadow">
+            <div class="login_col col-sm-2 col-md-6 col-lg-4 rounded p-4 shadow">
                 <div class="row justify-content-center mb-4">
                     <img class="logo" src="https://scontent-ams4-1.xx.fbcdn.net/v/t39.30808-6/262430885_109045001614891_2890011228913943444_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Ae_IE7Gmq_AAX9Bq-6B&_nc_oc=AQkyFoDAi1eYKXg9j3bBpYbX_0nPgEDpg53NOX-f9IOxUXc9ESwvK7G04JDRvtTp06U&_nc_ht=scontent-ams4-1.xx&oh=00_AT9dElGKp_obqW3cEyqjmULKVrqLoLF6u6pVAkLDBQqNNw&oe=629AA5DA" alt="De IJver Rijschool Logo">
                 </div>
@@ -29,7 +29,7 @@
                         <label for="floatingInput">Wachtwoord</label>
                     </div>
                     <?php include 'views/templates/msg.php'; ?>
-                    <input type="submit" name="action" value="Log In" class="btn">
+                    <input type="submit" name="action" value="Log In" class="login_btn btn">
                 </form>
                 <h6 class="mt-4 text-center">Nog geen account? Meld je <a href="register" class="text-primary">hier</a> aan</h6>
             </div>
