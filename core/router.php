@@ -31,9 +31,9 @@ class Router
                 require_once APPLICATION_PATH . '/controllers/PasswordChangeController.php';
                 $controller = 'PasswordChangeController';
                 break;
-            case 'dateadd':
-                require_once APPLICATION_PATH . '/controllers/DateAddController.php';
-                $controller = 'DateAddController';
+            case 'managebooking':
+                require_once APPLICATION_PATH . '/controllers/manageBookingController.php';
+                $controller = 'manageBookingController';
                 break;
             case 'booking':
                 require_once APPLICATION_PATH . '/controllers/BookingController.php';

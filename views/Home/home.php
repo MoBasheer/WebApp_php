@@ -69,7 +69,7 @@
                             <p class="card-text">
                                 Voeg je beschikbaarheid toe zodat klanten lessen kunnen boeken.
                             </p>
-                            <a href="/dateAdd" class="card_btn btn">Toevoegen</a>
+                            <a href="/manageBooking" class="card_btn btn">Toevoegen</a>
                         </div>
                     </div>
                 </div>
