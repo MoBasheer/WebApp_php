@@ -69,11 +69,29 @@
                             <p class="card-text">
                                 Voeg je beschikbaarheid toe zodat klanten lessen kunnen boeken.
                             </p>
-                            <a href="#" class="card_btn btn">Toevoegen</a>
+                            <a href="/dateAdd" class="card_btn btn">Toevoegen</a>
                         </div>
                     </div>
                 </div>
     </section>';
+ } else {
+    echo '<section class="p-5">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div class="h1 mb-3">
+                            <i class="bi bi-calendar-plus-fill"></i>
+                        </div>
+                        <h3 class="card-title mb-3">Rijles boeken</h3>
+                        <p class="card-text">
+                        Boek hier een les op basis van de beschikbaarheid van uw rij-instructeur.
+                        </p>
+                        <a href="/booking" class="card_btn btn">Boeken</a>
+                    </div>
+                </div>
+            </div>';
  }
     ?>
 </body>

@@ -2,7 +2,6 @@
 
 class Router
 {
-
     function route($url)
     {
         $url = strtolower($url);
@@ -31,6 +30,14 @@ class Router
             case 'passwordchange':
                 require_once APPLICATION_PATH . '/controllers/PasswordChangeController.php';
                 $controller = 'PasswordChangeController';
+                break;
+            case 'dateadd':
+                require_once APPLICATION_PATH . '/controllers/DateAddController.php';
+                $controller = 'DateAddController';
+                break;
+            case 'booking':
+                require_once APPLICATION_PATH . '/controllers/BookingController.php';
+                $controller = 'BookingController';
                 break;
             default:
                 require_once APPLICATION_PATH . '/controllers/NotFoundController.php';
