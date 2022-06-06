@@ -19,8 +19,12 @@ class manageBookingController extends Controller
             $newClass = $this->model('Classes');
             $aClass = $newClass->findClass($_POST['date'], $_POST['time_start'], $_POST['time_end']);
 
+            if ($aClass != NULL) {
+                $msg['error'] = 'De lesdatum, begintijd en eindtijd bestaan al, probeer een unieke tijd op een specifieke datum!';
+                $this->view('home/manageBooking', $msg);
+            }
             //Check that the start time is not after the end time or equal to the end time! => then INSERT into db
-            if ($aClass == NULL && $time_start !== $time_end && $time_start < $time_end) {
+            else if ($aClass == NULL && $time_start !== $time_end && $time_start < $time_end) {
                 $newClass->date = $_POST['date'];
                 $newClass->time_start = $_POST['time_start'];
                 $newClass->time_end = $_POST['time_end'];
