@@ -30,13 +30,14 @@
                 <input type="time" name="time_end" placeholder="Eindtijd" class="form-control">
                 <label for="floatingInput">Eindtijd</label>
             </div>
+            <?php include 'views/templates/msg.php'; ?>
             <input type="submit" name="action" value="Voeg toe" class="add_btn btn btn-success">
         </form>
     </section>
 
     <!-- Availability section -->
-    <section class="text-dark p-5 mt-5 text-center text-sm-start">
-        <h1>Alle lessen</h1>
+    <section class="text-dark p-5 text-center text-sm-start">
+        <h1>Lessen overzicht</h1>
         <table class="table table-hover">
             <thead class="table-secondary">
                 <th>Datum</th>
@@ -49,7 +50,7 @@
                 $class = $this->getClasses();
                 foreach ($class as $arrayIterator => $userValue) {
                     echo "<tr><td>" . htmlspecialchars($userValue->date, ENT_COMPAT, 'UTF-8') . "</td>" . "<td>" . htmlspecialchars($userValue->time_start, ENT_COMPAT, 'UTF-8')
-                        . "</td>" . "<td>" . htmlspecialchars($userValue->time_end, ENT_COMPAT, 'UTF-8') . "</td>" . "<td>" . htmlspecialchars($userValue->booked_by, ENT_COMPAT, 'UTF-8') . "</td>" . "</td></tr>";
+                        . "</td>" . "<td>" . htmlspecialchars($userValue->time_end, ENT_COMPAT, 'UTF-8') . "</td>" . "<td>" . htmlspecialchars($userValue->username, ENT_COMPAT, 'UTF-8') . "</td>" . "</td></tr>";
                 }
                 ?>
             </tbody>

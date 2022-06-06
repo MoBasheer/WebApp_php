@@ -2,6 +2,11 @@
 //Extend model class that perform all the connection to the database
 class User extends Model
 {
+    var $user_id;
+    var $username;
+    var $password;
+    var $role;
+
     //Get users info
     public function get()
     {
@@ -30,7 +35,6 @@ class User extends Model
         $stmt = self::$_connection->prepare($SQL);
         $stmt->execute(['username' => $this->username, 'password' => $this->password]);
         return $stmt->rowCount();
-        echo 'Je hebt met succes aangemeld, log hier in om verder te gaan!';
     }
 
     //Update user password
