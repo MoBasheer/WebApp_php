@@ -11,12 +11,16 @@
 <body>
     <!-- Navbar -->
     <?php include 'views/templates/nav.php'; ?>
-
+    <!-- csrf token -->
+    <?php include 'views/templates/token.php'; ?>
     <!--Body -->
     <section class="text-dark p-5 mt-5 text-center text-sm-start">
         <form action="" method="post">
             <div>
                 <h1 class="mb-5">Wachtwoord wijzigen</h1>
+            </div>
+            <div>
+                <input type="hidden" name="csrf_token" value="<?php echo $token ?>">
             </div>
             <div class="form-floating mb-3">
                 <input type="password" name="old_password" placeholder="Gebruikersnaam" class="form-control">
