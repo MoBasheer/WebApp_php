@@ -12,12 +12,8 @@
 </head>
 
 <body class="login_body">
-    <?php
-    //Create csrf token using "uniqid_func" to generate a unique & random token
-    // $token = md5(uniqid(rand(), true));
-    $token = bin2hex(uniqid(openssl_random_pseudo_bytes(16), true));
-    $_SESSION['csrf_token'] = $token;
-    ?>
+    <!-- csrf token -->
+    <?php include 'views/templates/token.php'; ?>
     <div class="container">
         <div class="row vh-100 align-items-center justify-content-center ">
             <div class="login_col col-sm-2 col-md-6 col-lg-4 rounded p-4 shadow">

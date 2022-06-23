@@ -14,10 +14,15 @@
 <body>
     <!-- Navbar -->
     <?php include 'views/templates/nav.php'; ?>
+    <!-- csrf token -->
+    <?php include 'views/templates/token.php'; ?>
     <!-- Availability add section -->
     <section class="text-dark p-5 mt-5 text-center text-sm-start">
         <h1>Beschikbaarheid toevoegen</h1>
         <form class="mg_bo_form" action="" method="post">
+            <div>
+                <input type="hidden" name="csrf_token" value="<?php echo $token ?>">
+            </div>
             <div class="form-floating mb-4">
                 <input type="date" name="date" placeholder="Datum" class="form-control">
                 <label for="floatingInput">Datum</label>
