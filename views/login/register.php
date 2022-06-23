@@ -12,6 +12,8 @@
 </head>
 
 <body class="login_body">
+    <!-- csrf token -->
+    <?php include 'views/templates/token.php'; ?>
     <div class="container">
         <div class="row vh-100 align-items-center justify-content-center ">
             <div class="login_col col-sm-2 col-md-6 col-lg-4 rounded p-4 shadow">
@@ -20,6 +22,9 @@
                 </div>
                 <h1 class="mb-4 text-center">Meld je hier aan</h1>
                 <form action="" method="post">
+                    <div>
+                        <input type="hidden" name="csrf_token" value="<?php echo $token ?>">
+                    </div>
                     <div class="form-floating mb-4">
                         <input type="text" name="username" placeholder="Gebruikersnaam" class="form-control">
                         <label for="floatingInput">Gebruikersnaam</label>
